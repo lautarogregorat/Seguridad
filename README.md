@@ -1,62 +1,92 @@
-# 🛡️ Ciberseguridad UTN - Training GISSIC FRC
+<h1 align="center">🛡️ Ciberseguridad UTN - Training GISSIC FRC</h1>
 
-Este repositorio contiene el desarrollo, análisis y soluciones a los desafíos del **training en Ciberseguridad** organizado por **GISSIC - UTN FRC**, con foco en el **desarrollo seguro**, la **práctica ofensiva** y la integración de seguridad en el ciclo de vida del software.
+<p align="center">
+  <em>💥 Formación ofensiva. 🛠️ Desarrollo seguro. 🔄 Seguridad integrada.</em><br>
+  <em>Una travesía técnica por el lado oscuro del código… para hacerlo más fuerte del lado luminoso.</em>
+</p>
 
----
-
-## 🎯 Objetivo del repositorio
-
-Mi objetivo con este proyecto es profundizar en vulnerabilidades comunes de aplicaciones web, comprender su impacto desde una perspectiva ofensiva y traducir ese conocimiento en **mejores prácticas de desarrollo seguro**.
-
-El enfoque está alineado con principios **DevSecOps**, integrando seguridad desde las etapas iniciales del desarrollo hasta el despliegue y mantenimiento.
-
----
-
-## 📚 ¿Qué vas a encontrar acá?
-
-- ✅ Análisis técnico de cada clase
-- ✅ Ejemplos prácticos y scripts de prueba
-- ✅ Soluciones a los desafíos del Hacklab
-- ✅ Documentación clara y enfocada al aprendizaje
-
-Cada carpeta corresponde a un tema tratado en el training, con su respectivo análisis técnico, vulnerabilidad explicada, entorno de prueba (cuando aplica) y código utilizado para explotar o mitigar el problema.
+<p align="center">
+  <img src="https://img.shields.io/badge/status-en%20construcción-yellow?style=for-the-badge&logo=github" />
+  <img src="https://img.shields.io/badge/DevSecOps-integrado-blueviolet?style=for-the-badge&logo=security" />
+  <img src="https://img.shields.io/badge/GISSIC-UTN%20FRC-blue?style=for-the-badge&logo=hackthebox" />
+</p>
 
 ---
 
-## 🧠 Temas cubiertos
+## 🎯 ¿Cuál es la misión?
 
-- Broken Access Control  
-- Manejo de tokens  
-- IDOR (Insecure Direct Object Reference)  
+Explorar, analizar y enfrentar vulnerabilidades reales 💣 de aplicaciones web. Todo con una mirada ofensiva para entender cómo piensan los atacantes...  
+👉 ¡y transformarlo en buenas prácticas de desarrollo seguro desde la raíz!
 
-Próximos temas (en progreso):
-
-- SQL Injection (SQLi)  
-- Hackeando transacciones  
-- Ataques a la autenticación  
-- CSRF  
-- XSS  
-- Entrenamientos HackLab  
+📦 Basado en principios **DevSecOps**, este proyecto busca incorporar seguridad **desde la primera línea de código** hasta el deploy final 🚀.
 
 ---
 
-## 🧰 Herramientas y stack usado
+## 📘 ¿Qué vas a encontrar acá?
 
-- Navegadores + DevTools  
-- Burp Suite  
-- Scripts en Python/Bash  
-- **Kali Linux en VirtualBox** (para herramientas ofensivas y entornos controlados)  
-- Docker para entornos de prueba  
-- Markdown para documentación  
+📂 Cada carpeta representa un tema del training y contiene:
 
----
-
-## 🚧 Estado
-
-Este repositorio está en construcción constante. Se irá actualizando a medida que avance el training, incorporando nuevos desafíos, soluciones y apuntes.
+<ul>
+  <li>🎓 Análisis técnico profundo</li>
+  <li>🧪 Scripts y ejemplos para romper (y arreglar)</li>
+  <li>💡 Soluciones a desafíos reales</li>
+  <li>✍️ Documentación clara, enfocada al aprendizaje</li>
+</ul>
 
 ---
 
-## 🙌 Contribución
+## 🧠 Temas abordados
 
-Este proyecto es de estudio personal, pero si te interesa intercambiar ideas o mejorar alguno de los scripts, ¡sos bienvenido a abrir un issue o proponer un cambio!
+✅ **Broken Access Control**  
+✅ **Token Management**  
+✅ **IDOR (Insecure Direct Object Reference)**  
+
+🧪 <strong>Próximos temas:</strong>
+- SQL Injection (SQLi)
+- Hackeando transacciones
+- Ataques a la autenticación
+- CSRF
+- XSS
+- HackLab trainings
+
+---
+
+## 🧰 Stack y herramientas favoritas
+
+<div style="display: flex; gap: 8px;">
+  
+- 🖥️ Navegadores + DevTools  
+- 🕸️ Burp Suite  
+- 🐍 Python + 🐚 Bash  
+- 🐧 Kali Linux (📦 VirtualBox)  
+- 🐳 Docker para entornos seguros de prueba  
+- 📝 Markdown para documentar todo como se debe  
+
+</div>
+
+---
+
+## 🔄 Estado del proyecto
+
+<p align="center">
+  <img src="https://img.shields.io/badge/build-in%20progress-orange?style=flat-square&logo=githubactions" />
+</p>
+
+🛠️ Este repo está en constante evolución.  
+Con cada clase, desafío o descubrimiento nuevo, se actualiza.  
+**Volvé seguido, seguro hay algo nuevo para aprender o romper.**
+
+---
+
+## 🤝 ¿Querés sumar algo?
+
+Aunque este proyecto nació como estudio personal, cualquier aporte o feedback es bienvenido 🙌  
+💬 **Abrí un issue o tirá un PR** si tenés ideas, mejoras o simplemente querés charlar sobre seguridad.
+
+---
+
+<blockquote>
+  <p><strong>“Los ataques no se detienen. Tampoco el aprendizaje.”</strong><br>
+  — ⚔️
+</blockquote>
+

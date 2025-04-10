@@ -104,6 +104,7 @@ El script `validarConGoogle.py` permite analizar un conjunto de tokens JWT para 
 3. **Verificación y análisis de tokens:**  
    - Cada token se verifica utilizando las claves públicas de Google.
    - Si un token ha expirado, se decodifica sin verificar la firma para extraer el campo `email` del payload.
+   - Si ninguna clave pública valida la firma del token (ya sea por estar equivocada, ser de otro issuer, o estar corrupta), ese token se ignora completamente y su email no se extrae, ni siquiera si está expirado.
 
 4. **Listado de correos electrónicos:**  
    Los correos electrónicos extraídos de los tokens expirados se ordenan alfabéticamente y se imprimen en la consola.

@@ -135,3 +135,66 @@ El script `validarConGoogle.py` permite analizar un conjunto de tokens JWT para 
 - Solo se procesan tokens firmados con el algoritmo `RS256`.
 - Los correos electrónicos extraídos pueden ser útiles para identificar a los atacantes.
 
+---
+
+## 🔍 Explicaciones Adicionales
+
+### 🔹 ¿Qué devuelve `jwt.decode(...)`?
+
+La función `jwt.decode(...)` devuelve el payload del token decodificado si:
+
+- La firma es válida.
+- El token no está expirado (a menos que desactives esta verificación).
+- Las opciones de verificación se cumplen (como algoritmo, issuer, etc.).
+
+Si algo falla, lanza una excepción, por ejemplo:
+
+- `ExpiredSignatureError` → si está expirado.
+- `InvalidSignatureError` → si la firma no coincide.
+- `DecodeError`, `InvalidTokenError`, etc.
+
+---
+
+### 🔹 ¿Cómo funciona el `for` y el `try`?
+
+Veamos este fragmento de código:
+
+```python
+try:
+    for key in claves_publicas["keys"]:
+        try:
+            jwt.decode(...)  # si es exitoso, no hace nada
+        except ExpiredSignatureError:
+            # extrae el email
+            ...
+            break
+except Exception:
+    continue
+```
+
+🔄 Entonces, ¿qué pasa si **NINGUNA clave funciona**?
+
+#### CASO 1: Alguna clave lanza `ExpiredSignatureError`
+- Entra al `except ExpiredSignatureError`, extrae el email y hace `break`.
+- Todo OK ✅.
+
+#### CASO 2: Todas las claves lanzan errores que no son `ExpiredSignatureError`
+- El `for` no hace `break`, por lo tanto recorre todas las claves.
+- Ninguna entra al `except ExpiredSignatureError`.
+- Si alguna lanza, por ejemplo, `InvalidSignatureError`, y no hay otro `except` dentro del `for` para atraparla, entonces esa excepción sale del `for` y es atrapada por el `except Exception:` de afuera.
+
+#### CASO 3: No se lanza ninguna excepción, pero el token no es válido
+- Esto es raro, porque `jwt.decode(...)` normalmente lanza una excepción si falla algo.
+- En la práctica: si ninguna clave valida correctamente la firma, `jwt.decode(...)` siempre lanza alguna excepción, por eso llegamos al `except Exception:` de afuera.
+
+---
+
+📌 **Aclaración sobre tu frase:**
+"¿El `for` evalúa `false` o el `try`?"
+
+- Ninguno "evalúa `false`". Lo que pasa es:
+  - El `for` recorre todas las claves. No devuelve nada.
+  - Si dentro del `for` no se lanza `ExpiredSignatureError`, no se extrae el email.
+  - Si alguna clave lanza otra excepción, y no hay un `except` adentro del `for` que la maneje, esa excepción salta al `try` exterior.
+  - El `try` externo atrapa todo lo que no se haya manejado adentro del `for`, gracias al `except Exception:`.
+

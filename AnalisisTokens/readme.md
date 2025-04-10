@@ -8,6 +8,89 @@ Sabemos que estos tres tokens fueron firmados por Google, lo que te puede ayudar
 
 **Nota:** Es probable que los tokens ya hayan expirado, pero analizarlos puede revelar los correos electrónicos de los atacantes.
 
+---
+
+## 🔐 ¿Por qué se usa una clave pública?
+
+Cuando Google emite un token JWT (por ejemplo, en una autenticación OAuth2), lo firma digitalmente con una clave privada que solo ellos tienen.  
+Para comprobar que el token realmente fue emitido por Google y que no fue alterado, cualquiera puede usar la clave pública correspondiente para verificar esa firma.
+
+---
+
+## 📥 Paso a paso de cómo se valida el token
+
+### 1. Obtener las claves públicas de Google
+
+Google publica sus claves públicas en este endpoint:  
+`https://www.googleapis.com/oauth2/v3/certs`
+
+El JSON obtenido contiene varias claves (en formato JWK), cada una con un `kid` (Key ID).  
+Ejemplo parcial:
+
+```json
+{
+  "keys": [
+    {
+      "kid": "abcdef123456...",
+      "alg": "RS256",
+      "n": "...",
+      "e": "AQAB",
+      "kty": "RSA",
+      "use": "sig"
+    },
+    ...
+  ]
+}
+```
+
+### 2. Leer el token JWT
+
+Un JWT tiene esta estructura:  
+`HEADER.PAYLOAD.SIGNATURE`
+
+En el `HEADER` (codificado en base64) hay algo como esto:
+
+```json
+{
+  "alg": "RS256",
+  "kid": "abcdef123456..."
+}
+```
+
+El `kid` indica cuál clave pública de la lista debe usarse para verificar este token.
+
+### 3. Verificar el token con la clave pública
+
+Usando una librería como `jwt` en Python (PyJWT) o alguna en tu lenguaje preferido, el proceso general es:
+
+```python
+jwt.decode(token, key=clave_publica, algorithms=["RS256"], audience="tu_client_id")
+```
+
+El módulo recalcula la firma del `header` + `payload` usando la clave pública y la compara con la parte `SIGNATURE` del token.  
+Si coinciden y el token no ha expirado, es válido ✅.
+
+### 4. ¿Y si el token está expirado?
+
+Cuando un token ha expirado, la verificación con `jwt.decode(..., verify=True)` falla.  
+En ese caso, se puede hacer:
+
+```python
+jwt.decode(token, options={"verify_signature": False})
+```
+
+Esto omite la verificación de firma y expiración, permitiéndote inspeccionar el `payload` para extraer, por ejemplo, el email:
+
+```json
+{
+  "email": "usuario@gmail.com",
+  "exp": 1700000000,
+  ...
+}
+```
+
+---
+
 ## Solución Propuesta
 
 El script `validarConGoogle.py` permite analizar un conjunto de tokens JWT para identificar aquellos que han expirado y extraer los correos electrónicos asociados. Esto se logra mediante los siguientes pasos:
@@ -25,6 +108,8 @@ El script `validarConGoogle.py` permite analizar un conjunto de tokens JWT para 
 4. **Listado de correos electrónicos:**  
    Los correos electrónicos extraídos de los tokens expirados se ordenan alfabéticamente y se imprimen en la consola.
 
+---
+
 ## Uso del Script
 
 1. Coloca los tokens comprometidos en un archivo llamado `tokens.txt`, con un token por línea.
@@ -33,6 +118,16 @@ El script `validarConGoogle.py` permite analizar un conjunto de tokens JWT para 
    python validarConGoogle.py
    ```
 3. El script mostrará en la consola los correos electrónicos asociados a los tokens expirados.
+
+---
+
+## 🛡️ ¿Para qué sirve esto en la práctica?
+
+- Confirmar que el token es legítimo (no fue alterado ni falsificado).
+- Verificar que está vigente.
+- Extraer la identidad del usuario autenticado (por ejemplo, su email).
+
+---
 
 ## Consideraciones
 

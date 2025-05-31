@@ -1,4 +1,4 @@
-<h1 align="center">🛡️ Ciberseguridad UTN - Training GISSIC FRC</h1>
+<h1 align="center">🛡️ Ciberseguridad </h1>
 
 <p align="center">
   <em>💥 Formación ofensiva. 🛠️ Desarrollo seguro. 🔄 Seguridad integrada.</em><br>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Configurar URL</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 500px;
+      width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    label {
+      font-weight: bold;
+    }
+    #estado {
+      margin-top: 5px;
+      color: green;
+    }
+    #espera {
+      margin-top: 20px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align: center;">Configurar dominio</h2>
+  <div>
+    <label style="font-size: 14px">Escriba el dominio del sistema que envía encuesta (incluya el protocolo y la barra al final).</label>
+  </div>
+  <input type="text" id="url" placeholder="https://<subdominio>.softwareseguro.com.ar/" style="width:400px; margin-top: 10px; padding:8px;"><br><br>
+
+  <button type="button" id="guardar" >Guardar</button>
+
+  <div id="estado" style="font-size: 14px"></div>
+  <div id="espera" style="font-size: 14px"></div>
+
+  <script src="popup.js" type="module" type="text/javascript"></script>
+
+</body>
+</html>

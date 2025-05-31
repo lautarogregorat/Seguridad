@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Voto Dirección",
+  "version": "1.0",
+  "description": "Permite votar en encuestas enviadas por un administrador.",
+  "permissions": ["notifications"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "background": {
+      "service_worker": "firebase-messaging-sw.js",
+      "type": "module"
+  }
+}

@@ -2,12 +2,12 @@ import requests
 from concurrent.futures import ThreadPoolExecutor
 
 # URL de destino
-url = "https://chl-c3c0fa3e-99e0-496b-aef9-cde1ada68a35-votacion-nueva-version.softwareseguro.com.ar/src/ctl/votacion.ctl.php"
+url = "https://chl-7fa96f8e-d04b-49e6-b3b4-5593fa471f04-votacion-nueva-version.softwareseguro.com.ar/src/ctl/votacion.ctl.php"
 
 # Cabeceras comunes
 headers = {
-    "Host": "chl-c3c0fa3e-99e0-496b-aef9-cde1ada68a35-votacion-nueva-version.softwareseguro.com.ar",
-    "Cookie": "_ga=GA1.3.752036958.1743859339; _gid=GA1.3.151983393.1743859339; PHPSESSID=abffa404a6672e72eac7ef832aa23ace;",
+    "Host": "chl-7fa96f8e-d04b-49e6-b3b4-5593fa471f04-votacion-nueva-version.softwareseguro.com.ar",
+    "Cookie": "_ga=GA1.3.752036958.1743859339; PHPSESSID=97085fb28c73e5149200f9f7f9433895",
     "Sec-Ch-Ua-Platform": "\"Windows\"",
     "Accept-Language": "es-ES,es;q=0.9",
     "Sec-Ch-Ua": "\"Not:A-Brand\";v=\"24\", \"Chromium\";v=\"134\"",
@@ -16,11 +16,11 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36",
     "Accept": "application/json, text/javascript, */*; q=0.01",
     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "Origin": "https://chl-c3c0fa3e-99e0-496b-aef9-cde1ada68a35-votacion-nueva-version.softwareseguro.com.ar",
+    "Origin": "https://chl-7fa96f8e-d04b-49e6-b3b4-5593fa471f04-votacion-nueva-version.softwareseguro.com.ar",
     "Sec-Fetch-Site": "same-origin",
     "Sec-Fetch-Mode": "cors",
     "Sec-Fetch-Dest": "empty",
-    "Referer": "https://chl-c3c0fa3e-99e0-496b-aef9-cde1ada68a35-votacion-nueva-version.softwareseguro.com.ar/",
+    "Referer": "https://chl-7fa96f8e-d04b-49e6-b3b4-5593fa471f04-votacion-nueva-version.softwareseguro.com.ar/",
     "Accept-Encoding": "gzip, deflate, br",
     "Priority": "u=1, i"
 }
